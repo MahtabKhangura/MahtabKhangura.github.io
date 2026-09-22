@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Architecture diagram placeholder">
+  <rect width="640" height="480" fill="#f8fafc"/>
+  <rect x="40" y="60" width="160" height="80" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="120" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" fill="#1e3a8a">Sensor</text>
+  <rect x="240" y="60" width="160" height="80" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="320" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" fill="#1e3a8a">MCU</text>
+  <rect x="440" y="60" width="160" height="80" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="520" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" fill="#1e3a8a">Output</text>
+  <line x1="200" y1="100" x2="240" y2="100" stroke="#64748b" stroke-width="3"/>
+  <line x1="400" y1="100" x2="440" y2="100" stroke="#64748b" stroke-width="3"/>
+  <text x="320" y="280" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" fill="#475569">Replace with your diagram or photo</text>
+</svg>

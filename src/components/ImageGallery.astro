@@ -1,0 +1,69 @@
+---
+export type GalleryImage = {
+  src: string;
+  alt: string;
+};
+
+interface Props {
+  images: GalleryImage[];
+}
+
+const { images } = Astro.props;
+---
+
+{
+  images.length > 0 && (
+    <>
+      <ul class="gallery" aria-label="Project screenshots">
+        {images.map((image, index) => (
+          <li class="gallery__item">
+            <button
+              type="button"
+              class="gallery__button"
+              data-gallery-open={index}
+              aria-label={`View larger: ${image.alt}`}
+            >
+              <img src={image.src} alt={image.alt} loading="lazy" width="640" height="480" />
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      <dialog class="gallery-dialog" id="gallery-dialog">
+        <div class="gallery-dialog__inner">
+          <img class="gallery-dialog__img" id="gallery-dialog-img" alt="" />
+          <p class="gallery-dialog__caption" id="gallery-dialog-caption" />
+          <button type="button" class="btn gallery-dialog__close" id="gallery-dialog-close">
+            Close
+          </button>
+        </div>
+      </dialog>
+
+      <script define:vars={{ images }}>
+        const dialog = document.getElementById('gallery-dialog');
+        const dialogImg = document.getElementById('gallery-dialog-img');
+        const dialogCaption = document.getElementById('gallery-dialog-caption');
+        const closeBtn = document.getElementById('gallery-dialog-close');
+
+        if (dialog instanceof HTMLDialogElement && dialogImg instanceof HTMLImageElement && dialogCaption) {
+          document.querySelectorAll('[data-gallery-open]').forEach((button) => {
+            button.addEventListener('click', () => {
+              const index = Number(button.getAttribute('data-gallery-open'));
+              const image = images[index];
+              if (!image) return;
+              dialogImg.src = image.src;
+              dialogImg.alt = image.alt;
+              dialogCaption.textContent = image.alt;
+              dialog.showModal();
+            });
+          });
+
+          closeBtn?.addEventListener('click', () => dialog.close());
+          dialog.addEventListener('click', (event) => {
+            if (event.target === dialog) dialog.close();
+          });
+        }
+      </script>
+    </>
+  )
+}

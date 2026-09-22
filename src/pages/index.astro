@@ -1,0 +1,105 @@
+---
+import { getEntry, getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Prose from '../components/Prose.astro';
+import { site } from '../lib/site';
+
+const homeIntro = await getEntry('home', 'index');
+const homeSkills = await getEntry('home', 'skills');
+const homeIntroContent = homeIntro ? await homeIntro.render() : null;
+const homeSkillsContent = homeSkills ? await homeSkills.render() : null;
+const hasAbout = homeIntroContent || homeSkillsContent;
+
+const projects = (await getCollection('projects'))
+  .filter((project) => project.data.featured !== false)
+  .sort((a, b) => {
+    const orderA = a.data.order ?? Number.MAX_SAFE_INTEGER;
+    const orderB = b.data.order ?? Number.MAX_SAFE_INTEGER;
+    if (orderA !== orderB) return orderA - orderB;
+    const dateA = a.data.date?.getTime() ?? 0;
+    const dateB = b.data.date?.getTime() ?? 0;
+    return dateB - dateA;
+  });
+---
+
+<BaseLayout>
+  <div class="container">
+    <section class="hero">
+      <div>
+        <h1 class="hero__title">{site.name}</h1>
+        <p class="hero__tagline">{site.tagline}</p>
+      </div>
+      <div class="hero__links">
+        {
+          site.email && (
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+          )
+        }
+        {
+          site.links.map((link) => (
+            <a href={link.url} target="_blank" rel="noreferrer">
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="projects" style="margin-top: 3rem;" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="section-title">Projects</h2>
+      {
+        projects.length === 0 ? (
+          <p class="hero__tagline">Add Markdown files in `src/content/projects/` to list projects here.</p>
+        ) : (
+          <div class="project-grid">
+            {
+              projects.map((project) => (
+                <ProjectCard
+                  href={`/projects/${project.slug}/`}
+                  title={project.data.title}
+                  summary={project.data.summary}
+                  tags={project.data.tags}
+                  thumbnail={project.data.thumbnail}
+                />
+              ))
+            }
+          </div>
+        )
+      }
+    </section>
+
+    {
+      hasAbout && (
+        <section style="margin-top: 3rem;" aria-labelledby="about-heading">
+          <h2 id="about-heading" class="section-title">About</h2>
+          <div class="about-layout">
+            {
+              homeIntroContent && (
+                <div class="about-layout__text">
+                  <Prose>
+                    <homeIntroContent.Content />
+                  </Prose>
+                </div>
+              )
+            }
+            {
+              site.avatar && (
+                <figure class="about-photo">
+                  <img src={site.avatar} alt="" loading="lazy" decoding="async" />
+                </figure>
+              )
+            }
+          </div>
+          {
+            homeSkillsContent && (
+              <Prose>
+                <homeSkillsContent.Content />
+              </Prose>
+            )
+          }
+        </section>
+      )
+    }
+  </div>
+</BaseLayout>

@@ -1,0 +1,16 @@
+name: Mahtab Khangura
+tagline: UBC Engineering Physics Student · Self-driven learner looking to take on challenges
+title: Mahtab Khangura
+description: Personal portfolio showcasing engineering projects and background.
+email: khanguramahtab@gmail.com
+avatar: /avatar.jpeg
+links:
+  - label: GitHub
+    url: https://github.com/MahtabKhangura
+  - label: LinkedIn
+    url: https://www.linkedin.com/in/mahtabkhangura
+nav:
+  - label: Home
+    href: /
+  - label: Projects
+    href: /#projects

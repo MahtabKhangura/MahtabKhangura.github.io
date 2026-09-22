@@ -1,0 +1,32 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ProjectMeta from '../components/ProjectMeta.astro';
+import ImageGallery from '../components/ImageGallery.astro';
+import Prose from '../components/Prose.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, summary, tags, links, date, images } = project.data;
+const { Content } = await project.render();
+---
+
+<BaseLayout title={title} description={summary}>
+  <div class="container">
+    <article>
+      <header class="project-header">
+        <h1 class="project-header__title">{title}</h1>
+        <ProjectMeta tags={tags} links={links} date={date} />
+      </header>
+
+      <Prose>
+        <Content />
+      </Prose>
+
+      <ImageGallery images={images} />
+    </article>
+  </div>
+</BaseLayout>
