@@ -8,13 +8,13 @@ tags:
   - PCB Design
   - KiCad
   - Circuit Schematic
-thumbnail: /PCBModel.png
+thumbnail: /projects/distrotion-pedal/PCBModel.png
 images:
-  - src: /CircuitSchematic.png
+  - src: /projects/distrotion-pedal/CircuitSchematic.png
     alt: Distortion circuit schematic
-  - src: /PCBLayout.png
+  - src: /projects/distrotion-pedal/PCBLayout.png
     alt: Layout of the distortion PCB
-  - src: /PCBModel.png
+  - src: /projects/distrotion-pedal/PCBModel.png
     alt: 3D rendering of the PCB design
 ---
 

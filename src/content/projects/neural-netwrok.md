@@ -10,9 +10,9 @@ tags:
   - NumPy
 links:
   repo: https://github.com/MahtabKhangura/NeuralNetwrok
-thumbnail: /MNISTDigit.webp
+thumbnail: /projects/neural-netwrok/MNISTDigit.webp
 images:
-  - src: /training.png
+  - src: /projects/neural-netwrok/training.png
     alt: Neural network training
 ---
 

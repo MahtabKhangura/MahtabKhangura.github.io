@@ -34,7 +34,7 @@ Edit [`src/content/home/index.md`](src/content/home/index.md) for intro copy. Sk
 ## Add a project
 
 1. Copy [`src/content/projects/_template.md`](src/content/projects/_template.md) to `src/content/projects/your-slug.md` (the filename becomes the URL: `/projects/your-slug/`).
-2. Put images in `public/projects/your-slug/` and reference them in frontmatter (`thumbnail`, `images`).
+2. Put images in `public/projects/your-slug/` and reference them in frontmatter (`thumbnail`, `images`). **Only files under `public/` are published**—do not store images in the repo root.
 3. Set `order` (lower numbers appear first on the home page) and `featured: false` to hide work-in-progress projects.
 4. Commit and push to `main`.
 
