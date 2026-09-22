@@ -47,9 +47,11 @@ Pushes to `main` run [`.github/workflows/deploy.yml`](.github/workflows/deploy.y
 One-time GitHub setup:
 
 1. Repository **Settings → Pages**
-2. **Build and deployment → Source**: GitHub Actions
+2. **Build and deployment → Source**: **GitHub Actions** (not “Deploy from a branch”)
 
-After the first successful workflow run, the site is live at `https://mahtabkhangura.github.io`.
+If you see `Invalid YAML front matter in .../Header.astro`, GitHub’s **Jekyll** builder is running on the Astro source. Use the Actions source above, and disable the legacy **pages build and deployment** workflow under **Actions** if it still runs on push. This repo includes `.nojekyll` so the published `dist/` is not processed by Jekyll.
+
+After the first successful **Deploy to GitHub Pages** workflow run, the site is live at `https://mahtabkhangura.github.io`.
 
 ## Project structure
 
