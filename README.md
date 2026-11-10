@@ -1,6 +1,6 @@
 # Mahtab Khangura — personal site
 
-Astro static portfolio for [GitHub Pages](https://mahtabkhangura.github.io). Project pages are Markdown; the home page pulls your bio and a project grid from content collections.
+Astro static portfolio for [MAHTAB KHANGURA](https://mahtabkhangura.github.io). Project pages are Markdown; the home page pulls your bio and a project grid from content collections.
 
 ## Local development
 
